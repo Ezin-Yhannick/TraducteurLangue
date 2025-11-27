@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "Expressions")
 public class Expressions {
 
     @Id @GeneratedValue

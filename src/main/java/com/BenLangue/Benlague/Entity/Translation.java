@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "Traduction")
 public class Translation {
 
     @Id @GeneratedValue

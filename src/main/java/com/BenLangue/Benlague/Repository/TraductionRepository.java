@@ -11,16 +11,15 @@ import java.util.Optional;
 public interface TraductionRepository extends JpaRepository<Translation, Long> {
 
     //Trouver une traduction à partir du texte et de la langue pour savoir l'expression correspondante
-    Optional<Translation> findByLanguageTexteIgnoreCase(Language language, String texte);
+    Optional<Translation> findByLanguageAndTexteIgnoreCase(Language language, String texte);
 
     // Variante si tu préfères passer le code langue directement (pratique) :
-    Optional<Translation> findByLanguage_CodeAndTextIgnoreCase(String languageCode, String text);
+    Optional<Translation> findByLanguage_CodeAndTexteIgnoreCase(String languageCode, String texte);
 
     // 2) Récupérer toutes les traductions d'une expression dans une langue donnée
 
     List<Translation> findByExpressionAndLanguage(Expressions expression, Language language);
 
     // Variante avec code langue
-    List<Translation> findByExpressionAndLanguage_Code(Expressions
-                                                               expression, String languageCode);
+    List<Translation> findByExpressionAndLanguage_Code(Expressions expression, String languageCode);
 }

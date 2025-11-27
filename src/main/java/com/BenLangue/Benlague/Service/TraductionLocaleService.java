@@ -34,7 +34,7 @@ public class TraductionLocaleService {
 
         //Commande pour chercher la traduction source
         Optional<Translation> srcTranslationOpt = traductionRepository
-                .findByLanguageTexteIgnoreCase(srcLangue, traductionRequest.getTexte());
+                .findByLanguageAndTexteIgnoreCase(srcLangue, traductionRequest.getTexte());
 
         if(srcTranslationOpt.isEmpty()){
             return new TraductionReponse(
