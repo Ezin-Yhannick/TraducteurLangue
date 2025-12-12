@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenLangue-Tableau de Bord Administrateur</title>
+    <link rel="stylesheet" href="/css/admin_dashbord.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+    
+    <header class="header">
+        <div class="header-left">
+            <i class="ri-translate-2" style="font-size: 26px; color: #2e7d32;"></i>
+         <div class="app-title">
+            <h1 class="app-title">BenLangue</h1>
+            <h2 class="dashboard-title">Tableau de Bord Administrateur</h2>
+        </div>
+        </div>
+        <div class="header-right">
+            <i class="ri-notification-3-line"></i>
+            <i class="ri-settings-3-line"></i>
+            <a class="logout-btn" href="/logout">Déconnexion</a>
+        </div>
+    </header>
+    <nav class="navbar">
+        <a class="active" href="admin/tableau_de_bord.html">Vue d'ensemble</a>
+        <a href="/admin/gestion_utilisateurs">Gestion des Utilisateurs</a>
+        <a href="/admin/manage_traductions">Traductions</a>
+        <a href="/admin/manage_expressions">Expressions</a>
+        <a href="/admin/manage_languages">Langues</a>
+        <a href="/admin/gestion_paramètres">Paramètres</a>
+    </nav>
+    
+    <main class="stats-grid">
+        <!-- stats-grid contient des cartes de statistiques -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon green"><i class="ri-book-open-line"></i></div>
+                <p class="stat-title">Expressions enregistrées</p>
+                <h2>1,245</h2>
+                <span class="stat-badge green">+5% depuis le mois dernier</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon blue"><i class="ri-user-3-line"></i></div>
+                <p class="stat-title">Traductions totales</p>
+                <h2>3,876</h2>
+                <span class="stat-badge blue">+8% depuis le mois dernier</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon yellow"><i class="ri-global-line"></i></div>
+                <p class="stat-title">Langues supportées</p>
+                <h2>12</h2> 
+                <span class="stat-badge yellow">Fr / Fon / Yor / En</span>
+            </div>
+
+        </section>
+
+        <section class="charts-section">
+            <div class="chart-card">
+                <h3>Expressions ajoutées</h3>
+               <select>
+                <option>7 jours</option>
+                <option>30 jours</option>
+               </select>
+            </div> 
+        
+            <div class="chart-placeholder">
+                <!-- Placeholder pour le graphique des expressions ajoutées -->
+                <p>Graphique des expressions ajoutées (à implémenter)</p>    
+            </div>
+
+            <div class="chart-card">
+                <h3>Utilisateurs actifs</h3>
+               <select>
+                <option>7 jours</option>
+                <option>30 jours</option>
+               </select>    
+            </div>
+            <div class="chart-card">
+    
+                <div class="chart-header">
+                    <h3>Distribution des traductions</h3>
+                    <a href="/admin/translations">Voir détails</a>
+                </div>
+            <div class="lang-list">
+
+                <div class="lang-item">
+                    <p>Fon → Français</p>
+                    <div class="bar">
+                        <div class="bar-fill green" style="width: 45%;"></div>
+                    </div>
+                    <span>214</span>
+                </div>
+
+                <div class="lang-item">
+                    <p>Français → Fon</p>
+                    <div class="bar">
+                        <div class="bar-fill blue" style="width: 28%;"></div>
+                    </div>
+                    <span>136</span>
+                </div>
+
+                <div class="lang-item">
+                    <p>Yoruba → Français</p>
+                    <div class="bar">
+                        <div class="bar-fill yellow" style="width: 17%;"></div>
+                    </div>
+                    <span>82</span>
+                </div>
+
+                <div class="lang-item">
+                    <p>Français → Yoruba</p>
+                    <div class="bar">
+                        <div class="bar-fill purple" style="width: 10%;"></div>
+                    </div>
+                    <span>50</span>
+                </div>
+             </div>
+            </div>
+        </section>
+        </main>
+
+        <script>
+            // ... (Votre code JS existant pour le modal) ...
+        
+            // ============================================
+            // ⭐ LOGIQUE DU PRELOADER
+            // ============================================
+            const preloader = document.getElementById('preloader');
+        
+            window.addEventListener('load', () => {
+                // Ajoute la classe qui déclenche la transition CSS (opacity: 0; visibility: hidden;)
+                if (preloader) {
+                    preloader.classList.add('preloader-hidden');
+        
+                    // Facultatif : Supprime l'élément du DOM après la transition
+                    // pour libérer des ressources (environ 1 seconde après)
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 1000); 
+                }
+            });
+        </script>
+</body>
+</html>

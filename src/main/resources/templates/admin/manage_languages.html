@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenLangue - Langues</title>
+    <link rel="stylesheet" href="/css/admin_dashbord.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+    
+
+<header class="header">
+    <div class="header-left">
+        <i class="ri-translate-2" style="font-size: 26px; color: #2e7d32;"></i>
+        <div>
+            <h1 class="app-title">BenLangue</h1>
+            <h2 class="dashboard-title">Tableau de Bord Administrateur</h2>
+        </div>
+    </div>
+    <div class="header-right">
+        <i class="ri-notification-3-line"></i>
+        <i class="ri-settings-3-line"></i>
+        <a class="logout-btn" href="/admin/logout">Déconnexion</a>
+    </div>
+</header>
+
+<nav class="navbar">
+    <a href="/admin/tableau_de_bord">Vue d'ensemble</a>
+    <a href="/admin/gestion_utilisateurs">Gestion des Utilisateurs</a>
+    <a href="/admin/manage_expressions">Expressions</a>
+    <a href="/admin/manage_traductions">Traductions</a>
+    <a class="active" href="/admin/manage_languages">Langues</a>
+    <a href="/admin/gestion_paramètres">Paramètres</a>
+</nav>
+
+<main class="main-content">
+
+    <div class="page-header">
+        <div>
+            <h2 class="page-title">Gestion des Langues</h2>
+            <p class="page-subtitle">Gérez les langues supportées par BenLangue.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-open-lang-modal">
+            <i class="ri-add-line"></i> Ajouter une langue
+        </button>
+    </div>
+
+    <section class="card">
+        <div class="card-header">
+            <h3>Liste des langues</h3>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Code</th>
+                    <th>Traductions</th>
+                    <th>Statut</th>
+                    <th style="text-align:right;">Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Français</td>
+                    <td>fr</td>
+                    <td>325</td>
+                    <td><span class="badge badge-green">Actif</span></td>
+                    <td class="table-actions">
+                        <button class="btn btn-ghost btn-sm"><i class="ri-edit-line"></i></button>
+                        <button class="btn btn-ghost btn-sm btn-danger-text"><i class="ri-delete-bin-line"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Fon</td>
+                    <td>fon</td>
+                    <td>220</td>
+                    <td><span class="badge badge-green">Actif</span></td>
+                    <td class="table-actions">
+                        <button class="btn btn-ghost btn-sm"><i class="ri-edit-line"></i></button>
+                        <button class="btn btn-ghost btn-sm btn-danger-text"><i class="ri-delete-bin-line"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<!-- MODAL AJOUT LANGUE -->
+<div class="modal" id="lang-modal">
+    <div class="modal-backdrop" id="lang-backdrop"></div>
+
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3>Ajouter une langue</h3>
+            <button class="modal-close" id="lang-close"><i class="ri-close-line"></i></button>
+        </div>
+
+        <form class="modal-body">
+            <div class="form-group">
+                <label>Nom de la langue</label>
+                <input type="text" placeholder="Ex : Yoruba">
+            </div>
+
+            <div class="form-group">
+                <label>Code ISO</label>
+                <input type="text" placeholder="Ex : yo">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" id="lang-cancel">Annuler</button>
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+     //logique preloader
+     const preloader = document.getElementById('preloader');
+
+window.addEventListener('load', () => {
+    // Ajoute la classe qui déclenche la transition CSS (opacity: 0; visibility: hidden;)
+    if (preloader) {
+        preloader.classList.add('preloader-hidden');
+
+        // Facultatif : Supprime l'élément du DOM après la transition
+        // pour libérer des ressources (environ 1 seconde après)
+        setTimeout(() => {
+            preloader.remove();
+        }, 1000); 
+    }
+});
+
+    const btnOpen = document.getElementById("btn-open-lang-modal");
+    const modal = document.getElementById("lang-modal");
+    const closeBtn = document.getElementById("lang-close");
+    const cancelBtn = document.getElementById("lang-cancel");
+    const backdrop = document.getElementById("lang-backdrop");
+
+    btnOpen.onclick = () => modal.classList.add("modal-open");
+    closeBtn.onclick = () => modal.classList.remove("modal-open");
+    cancelBtn.onclick = () => modal.classList.remove("modal-open");
+    backdrop.onclick = () => modal.classList.remove("modal-open");
+</script>
+
+</body>
+</html>

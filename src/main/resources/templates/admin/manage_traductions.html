@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenLangue - Traductions</title>
+    <link rel="stylesheet" href="/css/admin_dashbord.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+    
+
+<header class="header">
+    <div class="header-left">
+        <i class="ri-translate-2" style="font-size: 26px; color: #2e7d32;"></i>
+        <div>
+            <h1 class="app-title">BenLangue</h1>
+            <h2 class="dashboard-title">Tableau de Bord Administrateur</h2>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <i class="ri-notification-3-line"></i>
+        <i class="ri-settings-3-line"></i>
+        <a class="logout-btn" href="/admin/logout">Déconnexion</a>
+    </div>
+</header>
+
+<nav class="navbar">
+    <a href="/admin/tableau_de_bord">Vue d'ensemble</a>
+    <a href="/admin/gestion_utilisateurs">Gestion des Utilisateurs</a>
+    <a class="active" href="/admin/manage_traductions">Traductions</a>
+    <a href="/admin/manage_expressions">Expressions</a>
+    <a href="/admin/manage_languages">Langues</a>
+    <a href="/admin/gestion_paramètres">Paramètres</a>
+</nav>
+
+<main class="main-content">
+
+    <!-- En-tête de page -->
+    <div class="page-header">
+        <div>
+            <h2 class="page-title">Traductions</h2>
+            <p class="page-subtitle">
+                Gérez les traductions associées à chaque expression et langue.
+            </p>
+        </div>
+        <button class="btn btn-primary" id="btn-open-translation-modal">
+            <i class="ri-add-line"></i> Ajouter une traduction
+        </button>
+    </div>
+
+    <!-- Carte liste des traductions -->
+    <section class="card">
+        <div class="card-header">
+            <h3>Liste des traductions</h3>
+            <div class="card-actions">
+                <input type="text" class="input-search" placeholder="Rechercher une traduction…">
+            </div>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Expression</th>
+                    <th>Langue</th>
+                    <th>Texte traduit</th>
+                    <th>Audio</th>
+                    <th style="text-align: right;">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="traductions-table-body">
+                <!-- EXEMPLES STATIQUES TEMPORAIRES -->
+                <tr>
+                    <td>1</td>
+                    <td>Bonjour</td>
+                    <td>Fon (fn)</td>
+                    <td>Wézon</td>
+                    <td>
+                        <span class="badge badge-purple">
+                            <i class="ri-volume-up-line"></i> Fichier
+                        </span>
+                    </td>
+                    <td class="table-actions">
+                        <button class="btn btn-ghost btn-sm">
+                            <i class="ri-edit-line"></i> Modifier
+                        </button>
+                        <button class="btn btn-ghost btn-sm btn-danger-text">
+                            <i class="ri-delete-bin-line"></i> Supprimer
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Merci</td>
+                    <td>Yoruba (yo)</td>
+                    <td>O se</td>
+                    <td>
+                        <span class="badge badge-grey">
+                            <i class="ri-volume-mute-line"></i> Aucun
+                        </span>
+                    </td>
+                    <td class="table-actions">
+                        <button class="btn btn-ghost btn-sm">
+                            <i class="ri-edit-line"></i> Modifier
+                        </button>
+                        <button class="btn btn-ghost btn-sm btn-danger-text">
+                            <i class="ri-delete-bin-line"></i> Supprimer
+                        </button>
+                    </td>
+                </tr>
+                <!-- PLUS TARD : lignes injectées en JS depuis /api/admin/traductions -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<!-- Modal ajout / édition traduction -->
+<div class="modal" id="translation-modal">
+    <div class="modal-backdrop" id="translation-modal-backdrop"></div>
+
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h3 id="translation-modal-title">Ajouter une traduction</h3>
+            <button class="modal-close" id="translation-modal-close">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+
+        <form class="modal-body" id="translation-form">
+            <div class="form-group">
+                <label for="translation-expression">Expression</label>
+                <!-- plus tard: rempli en JS à partir de /api/admin/expressions -->
+                <select id="translation-expression" name="expressionId" required>
+                    <option value="">Sélectionner une expression…</option>
+                    <option value="1">Bonjour</option>
+                    <option value="2">Merci</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="translation-language">Langue</label>
+                <!-- plus tard: rempli en JS à partir de /api/admin/langues -->
+                <select id="translation-language" name="languageId" required>
+                    <option value="">Sélectionner une langue…</option>
+                    <option value="1">Fon (fn)</option>
+                    <option value="2">Français (fr)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="translation-text">Texte traduit</label>
+                <input type="text" id="translation-text" name="texte" required placeholder="Ex : Wézon">
+            </div>
+
+            <div class="form-group">
+                <label for="translation-audio">Fichier audio (optionnel)</label>
+                <input type="file" id="translation-audio" name="audio">
+                <p class="field-help">Plus tard : upload vers l’API d’audio.</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" id="translation-cancel">
+                    Annuler
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    //logique preloader
+    const preloader = document.getElementById('preloader');
+
+    window.addEventListener('load', () => {
+        // Ajoute la classe qui déclenche la transition CSS (opacity: 0; visibility: hidden;)
+        if (preloader) {
+            preloader.classList.add('preloader-hidden');
+
+            // Facultatif : Supprime l'élément du DOM après la transition
+            // pour libérer des ressources (environ 1 seconde après)
+            setTimeout(() => {
+                preloader.remove();
+            }, 1000); 
+        }
+    });
+    // Mini JS pour le modal
+    const tOpenBtn = document.getElementById('btn-open-translation-modal');
+    const tModal = document.getElementById('translation-modal');
+    const tCloseBtn = document.getElementById('translation-modal-close');
+    const tCancelBtn = document.getElementById('translation-cancel');
+    const tBackdrop = document.getElementById('translation-modal-backdrop');
+
+    function openTModal() {
+        tModal.classList.add('modal-open');
+    }
+
+    function closeTModal() {
+        tModal.classList.remove('modal-open');
+    }
+
+    tOpenBtn.addEventListener('click', openTModal);
+    tCloseBtn.addEventListener('click', closeTModal);
+    tCancelBtn.addEventListener('click', closeTModal);
+    tBackdrop.addEventListener('click', closeTModal);
+
+    // PLUS TARD : ici on fera le fetch() vers /api/admin/traductions, /api/admin/expressions, /api/admin/langues
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenLangue-Tableau de Board</title>
+    <link rel="stylesheet" href="/css/admin_dashbord.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+    
+    <header class="header">
+        <div class="header-left">
+            <i class="ri-translate-2" style="font-size: 26px; color: #2e7d32;"></i>
+         <div class="app-title">
+            <h1 class="app-title">BenLangue</h1>
+            <h2 class="dashboard-title">Gestion des Utilisateurs</h2>
+        </div>
+        </div>
+        <div class="header-right">
+            <i class="ri-notification-3-line"></i>
+            <i class="ri-settings-3-line"></i>
+            <a class="logout-btn" href="/logout">Déconnexion</a>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <a href="/admin/tableau_de_bord">Vue d'ensemble</a>
+        <a class="active" href="/admin/gestion_utilisateurs">Gestion des Utilisateurs</a>
+        <a href="/admin/manage_traductions">Traductions</a>
+        <a href="/admin/manage_traductions">Expressions</a>
+        <a href="/admin/manage_languages">Langues</a>
+        <a href="/admin/gestion_paramètres">Paramètres</a>
+    </nav>
+    <main class="main-content">
+        <section class="card" style="text-align:center; padding:50px;">
+            <i class="ri-user-3-line placeholder-icon" style="font-size:55px; color:#2e7d32;"></i>
+            <h2 style="margin-top:10px;">Utilisateurs</h2>
+            <p style="color:#666; margin-top:10px;">
+                Cette section est actuellement en cours de développement.
+            </p>
+        </section>
+    </main>
+    <script>
+         //logique preloader
+    const preloader = document.getElementById('preloader');
+
+window.addEventListener('load', () => {
+    // Ajoute la classe qui déclenche la transition CSS (opacity: 0; visibility: hidden;)
+    if (preloader) {
+        preloader.classList.add('preloader-hidden');
+
+        // Facultatif : Supprime l'élément du DOM après la transition
+        // pour libérer des ressources (environ 1 seconde après)
+        setTimeout(() => {
+            preloader.remove();
+        }, 1000); 
+    }
+});
+    </script>
+</body>
+</html>

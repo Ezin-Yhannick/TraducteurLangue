@@ -12,7 +12,7 @@ import lombok.*;
 @Table(name = "Traduction")
 public class Translation {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false)

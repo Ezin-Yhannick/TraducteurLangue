@@ -1,0 +1,677 @@
+/* ============================
+   GLOBAL
+============================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #f7f9fb;
+    color: #1d1d1f;
+}
+
+/* ================================
+   ⭐ PRELOADER STYLES
+================================ */
+
+/* Conteneur qui masque tout l'écran */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f9fb; /* Mettez la même couleur que le body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assurez-vous qu'il est au-dessus de tout */
+    opacity: 1;
+    visibility: visible;
+    /* Transition pour une disparition fluide */
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
+}
+
+/* Classe pour cacher le préchargeur (ajoutée par JS) */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* L'élément rotatif (le 'spinner') */
+.preloader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(46, 125, 50, 0.2); /* Bague grise claire (vert foncé à 20% d'opacité) */
+    border-top-color: #2e7d32; /* La partie qui bouge (vert primaire) */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Lance l'animation */
+}
+
+/* Keyframes pour l'animation de rotation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================
+   HEADER
+============================ */
+/* ============================
+   HEADER FIXED (corrected)
+============================ */
+
+.header {
+    background: #ffffff;
+    padding: 18px 35px;    /* 🔥 un peu plus de padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* LEFT PART */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;   /* 🔥 plus d'espace entre l'icone et le texte */
+}
+
+.app-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.dashboard-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: #6e6e73;
+    margin-top: 2px;   /* 🔥 aération entre le H1 et H2 */
+}
+
+/* RIGHT PART FIX */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;  /* 🔥 espace plus large */
+}
+
+.header-right i {
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #ffe5e5;
+    color: #d33;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.logout-btn:hover {
+    background: #ffcccc;
+}
+
+/* ============================
+   NAVBAR
+============================ */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    padding: 14px 35px;
+    background: #ffffff;
+    margin-top: 2px;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6d6d72;
+    padding-bottom: 6px;
+    transition: 0.2s;
+}
+
+.navbar a:hover {
+    color: #1d1d1f;
+}
+
+.navbar .active {
+    color: #2e7d32;
+    border-bottom: 2px solid #2e7d32;
+}
+
+/* ============================
+   MAIN GRID
+============================ */
+.stats-grid {
+    padding: 30px 35px;
+    display: grid;
+    gap: 25px;
+}
+
+/* ================================
+   ⭐ MAIN CONTENT CONTAINER
+================================ */
+
+.main-content {
+    /* Le padding donne l'aération autour du contenu */
+    padding: 30px 35px; 
+}
+
+/* ================================
+   ⭐ PAGE HEADER (Nouveau pour séparation)
+================================ */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Espace sous l'en-tête de la page avant la carte */
+    margin-bottom: 25px; 
+}
+
+.page-title {
+    font-size: 28px; /* Un peu plus grand pour le titre principal */
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 5px; /* Petite aération entre le titre et le sous-titre */
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ============================
+   STAT CARDS
+============================ */
+.stat-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 250px;
+    transition: 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.stat-icon.green { background: #e9f7ef; color: #2e7d32; }
+.stat-icon.blue { background: #e7f1ff; color: #2f6fea; }
+.stat-icon.yellow { background: #fff8e1; color: #e6b400; }
+
+.stat-title {
+    font-size: 14px;
+    color: #6e6e73;
+    margin-bottom: 5px;
+}
+
+.stat-card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.stat-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 7px;
+    border-radius: 6px;
+}
+
+.stat-badge.green { background: #e7f7eb; color: #2e7d32; }
+.stat-badge.blue { background: #e7efff; color: #2f6fea; }
+.stat-badge.yellow { background: #fff4d6; color: #e6b400; }
+
+/* ============================
+   GRID FOR TOP CARDS
+============================ */
+.stats-grid > section:first-child {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* ============================
+   CHART SECTIONS
+============================ */
+.charts-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.chart-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.chart-card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.chart-card select {
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+}
+
+/* Placeholder Graphique */
+.chart-placeholder {
+    height: 260px;
+    background: linear-gradient(to bottom, #e8fff0, #d6fbe3);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2e7d32;
+    font-size: 16px;
+}
+
+/* ============================
+   LANGUAGE DISTRIBUTION
+============================ */
+.lang-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.lang-item p {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.bar {
+    width: 100%;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 8px;
+}
+
+.bar-fill.green { background: #2e7d32; }
+.bar-fill.blue { background: #2f6fea; }
+.bar-fill.yellow { background: #e6b400; }
+.bar-fill.purple { background: #8e44ad; }
+
+.lang-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6d6d72;
+}
+
+.placeholder-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.placeholder-box {
+    text-align: center;
+    background: #fff;
+    padding: 40px 60px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.placeholder-icon {
+    font-size: 56px;
+    color: #4caf50;
+    margin-bottom: 12px;
+}
+
+/* ====== MODAL ====== */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-open {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(3px);
+}
+
+.modal-dialog {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 24px 20px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    z-index: 51;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: #6b7280;
+}
+
+.modal-body .form-group {
+    margin-bottom: 16px;
+}
+
+.modal-body label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="file"],
+.modal-body select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+.field-help {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 1000px) {
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .stats-grid > section:first-child {
+        flex-direction: column;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+/* ================================
+   🔵 TABLES (style Readdy-like)
+================================ */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+}
+
+.table thead tr {
+    background: transparent;
+}
+
+.table thead th {
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table tbody tr {
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: 0.2s;
+}
+
+.table tbody tr:hover {
+    transform: scale(1.004);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.table tbody td {
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #1f2937;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* ============================================
+   🟢 BADGES MODERNES
+============================================ */
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-green {
+    background: #e8f7ed;
+    color: #1b5e20;
+}
+
+.badge-blue {
+    background: #e8efff;
+    color: #1e3a8a;
+}
+
+/* ============================================
+   🟣 BOUTON GHOST AMÉLIORÉ
+============================================ */
+.btn-ghost {
+    background: transparent;
+    color: #374151;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.btn-ghost:hover {
+    background: #f3f4f6;
+}
+/* ================================
+   🟤 CARD (contour, header, body)
+================================ */
+
+.card {
+    background: white;
+    padding: 0;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    margin-top: 20px;
+}
+
+.card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #1f2937;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* ================================
+   🔍 SEARCH INPUT
+================================ */
+
+.input-search {
+    padding: 10px 14px;
+    width: 220px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.input-search:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px #bbf7d0;
+}
+
+/* ================================
+   🟣 BUTTONS (Primary, Ghost, Danger)
+================================ */
+
+.btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-primary {
+    background: #2e7d32;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #256728;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #374151;
+}
+
+.btn-ghost:hover {
+    background: #f3f4f6;
+}
+
+.btn-danger-text {
+    color: #d32f2f;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+
+/* ================================
+   🟡 FORMS
+================================ */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2e7d32;
+    outline: none;
+    box-shadow: 0 0 0 2px #a7f3d0;
+}

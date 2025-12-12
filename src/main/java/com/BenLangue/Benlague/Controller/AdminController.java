@@ -1,51 +1,40 @@
 package com.BenLangue.Benlague.Controller;
 
-import com.BenLangue.Benlague.Entity.Expressions;
-import com.BenLangue.Benlague.Entity.Translation;
-import com.BenLangue.Benlague.Service.AdminService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RestController
-@RequestMapping("/api/admin")
-@RequiredArgsConstructor
+@Controller
 public class AdminController {
 
-    private final AdminService adminService;
-
-    //....Controller pour les appels des services des Expressions
-    @GetMapping("/expressions")
-    public List<Expressions> getExpressions(){
-        return adminService.getAllExpressions();
+    @GetMapping("/admin/login")
+    public String adminLogin(){
+        return "admin/login";
     }
 
-    @PostMapping("/expressions")
-    public Expressions createExpressions(@RequestBody Expressions expressions){
-        return adminService.createExpressions(expressions);
+    @GetMapping("/admin/tableau_de_board")
+    public String adminDashboard(){
+        return "admin/tableau_de_board";
     }
 
-    @PutMapping("/expressions/{id}")
-    public Expressions updateExpressions(@PathVariable Long id, @RequestBody Expressions expressions){
-        return adminService.updateExpressions(id,expressions);
+    @GetMapping("/admin/gestion_utilisateurs")
+    public String manage_users(){return "admin/gestion_utilisateurs";}
+
+    @GetMapping("/admin/manage_expressions")
+    public String manageExpressions(){
+        return "admin/manage_expressions";
     }
 
-    @DeleteMapping("/expressions/{id}")
-    public void deleteExpressions(@PathVariable Long id){
-        adminService.deleteExpressions(id);
+    @GetMapping("/admin/manage_traductions")
+    public String manageTraductions(){
+        return "admin/manage_traductions";
     }
 
-    //....Controller pour les appels des services des traductions
-
-    @GetMapping("/traductions")
-    public List<Translation> getAllTranslation(){
-        return adminService.getAllTranslations();
+    @GetMapping("/admin/manage_languages")
+    public String manageLanguages(){
+        return "admin/manage_languages";
     }
 
-    @PostMapping("/traductions")
-    public Translation createTranslation(@RequestBody Translation translation){
-        return adminService.createTranslation(translation);
-    }
-
+    @GetMapping("/admin/gestion_paramètres")
+    public String settings(){return "admin/gestion_paramètres";}
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "Expressions")
 public class Expressions {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private boolean isPhrase;

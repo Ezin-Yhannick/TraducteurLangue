@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion Administrateur</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="login-body">
+    
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+    
+
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-icon">
+                <img src="/images/admin-icon.png" alt="Icône Admin" class="admin-icon">
+            </div>
+            <h2 class="login-title">Espace Administrateur</h2>
+            <p>Connectez-vous pour la gestion de l'application</p>
+        </div>
+        <form th:action="@{/admin/login}" method="post" class="login-form">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+                <span class="icon">📧</span>
+                <input type="email" id="email" name="email" placeholder="admin@gmail.com" required>
+            </div>
+            <label for="password">Mot de passe</label>
+            <div class="input-wrapper">
+                <span class="icon">🔒</span>
+                <input type="password" id="password" name="password" placeholder="Mot de passe" required>   
+            </div>
+            <div class="login-options">
+                <label>
+                    <input type="checkbox" name="remember-me">
+                    Se souvenir de moi
+                </label>
+                <a href="#" class="forgot-password">Mot de passe oublié?</a>
+            </div>
+            <button type="submit" class="login-button">Se connecter</button>
+        </form>
+    </div>
+    
+</body>
+</html>

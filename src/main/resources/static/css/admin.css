@@ -1,0 +1,111 @@
+/* ==== GLOBAL ==== */
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* login page */
+.login-body{
+    background: linear-gradient(to bottom right, #e8fff3, #fffced);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    background: white;
+    width: 380px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.login-header h2 {
+    margin: 10px 0 5px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.login-header p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.login-icon img {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+}
+
+.login-form label {
+    display: block;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 17px;
+    color: #888;
+}
+
+.input-wrapper input {
+    width: 90%;
+    padding: 12px 12px 12px 38px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    transition: border .2s;
+}
+
+.input-wrapper input:focus {
+    border-color: #00a86b;
+}
+
+.login-options {
+    margin: 15px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.forgot-link {
+    color: #00a86b;
+}
+
+.login-button {
+    width: 100%;
+    padding: 13px;
+    background: #00a86b;
+    color: white;
+    border-radius: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #00975f;
+}
+
+/* ==== HEADER ==== */
